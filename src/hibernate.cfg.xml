@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 5.4//EN"  
+          "http://www.hibernate.org/dtd/hibernate-configuration-5.3.dtd">
+  
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        <property name="connection.url">jdbc:oracle:thin:@//192.168.178.94:1521/XEPDB1</property>
+        <property name="connection.username">ChipkaartOpdracht</property>
+        <property name="connection.password">BroederGemeente420</property>
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
+        <mapping resource="OvChipkaart.hbm.xml"/>
+        <mapping resource="Reiziger.hbm.xml"/>
+        <mapping class="domain.OvChipkaart"></mapping>
+        <mapping class="domain.Reiziger"></mapping>
+    </session-factory>
+</hibernate-configuration> 

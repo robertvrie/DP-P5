@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2019 1:45:22 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="domain.OvChipkaart" table="OV_CHIPKAART">
+        <meta attribute = "class-description">
+            This class contains the OvChipkaart detail
+        </meta>
+        <id name="kaartnummer" type="int">
+            <column name="kaartnummer"/>
+            <generator class="assigned" />
+        </id>
+        <property name="geldigTot" column="geldigtot" type="date"/>
+        <property name="klasse" column="klasse" type="int"/>
+        <property name="saldo" column="saldo" type="double"/>
+        <property name="reizigerId" column="reizigerid" type="int"/>
+    </class>
+</hibernate-mapping>

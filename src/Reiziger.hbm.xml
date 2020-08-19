@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 7, 2019 1:45:22 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="domain.Reiziger" table="REIZIGER">
+        <meta attribute = "class-description">
+            This class contains the OvChipkaart detail
+        </meta>
+        <id name="reizigerId" type="int">
+            <column name="reizigerid"/>
+            <generator class="assigned" />
+        </id>
+        <property name="voorletters" column="voorletters" type="string"/>
+        <property name="tussenvoegsel" column="tussenvoegsel" type="string"/>
+        <property name="achternaam" column="achternaam" type="string"/>
+        <property name="gbdatum" column="gebortedatum" type="date"/>
+        
+        <set name="kaarten" cascade="all" lazy="false">
+            <key column = "reizigerId"></key>
+            <one-to-many class="domain.OvChipkaart"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
