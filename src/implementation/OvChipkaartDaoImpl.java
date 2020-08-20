@@ -51,7 +51,44 @@ public class OvChipkaartDaoImpl extends OracleBaseDao implements OvChipkaartDao 
         return kaarten;
     }
 
-    public void deleteKaart(OvChipkaart ovChipkaart){
+    public boolean updateKaart(OvChipkaart o1){
+        factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+        boolean success = false;
 
+        try {
+            tx = session.beginTransaction();
+            OvChipkaart o2 = (OvChipkaart) session.get(OvChipkaart.class, o1.getKaartnummer());
+            o2.setKlasse( o1.getKlasse() );
+            o2.setSaldo( o1.getSaldo() );
+            o2.setGeldigTot(o1.getGeldigTot());
+            session.update(o2);
+            success = true;
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return success;
+    }
+
+    public void deleteKaart(OvChipkaart ovChipkaart){
+        factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            session.delete(ovChipkaart);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 }

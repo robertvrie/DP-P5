@@ -16,7 +16,7 @@
         <property name="achternaam" column="achternaam" type="string"/>
         <property name="gbdatum" column="gebortedatum" type="date"/>
         
-        <set name="kaarten" cascade="all" lazy="false">
+        <set name="kaarten" cascade="delete" lazy="false">
             <key column = "reizigerId"></key>
             <one-to-many class="domain.OvChipkaart"></one-to-many>
         </set>
